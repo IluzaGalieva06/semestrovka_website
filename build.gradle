@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'kpfu.itis'
+version '1.0-SNAPSHOT'
+apply plugin: 'war'
+compileJava.options.encoding = "UTF-8"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    providedCompile 'org.apache.tomcat:tomcat-catalina:7.0.47'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+    providedCompile 'javax.servlet.jsp:jsp-api:2.2.1-b03'
+    implementation 'org.postgresql:postgresql:42.6.0'
+    implementation 'javax.servlet:jstl:1.2'
+    implementation 'com.sun.mail:javax.mail:1.6.2' // или последняя версия
+    implementation 'javax.activation:activation:1.1.1' // или последняя версия
+
+}
+
+test {
+    useJUnitPlatform()
+}
