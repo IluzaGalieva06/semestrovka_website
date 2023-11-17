@@ -30,7 +30,7 @@ public class BuyTicketServlet extends HttpServlet {
         request.setAttribute("concertName", name);
         request.setAttribute("concertPrice", price);
 
-        request.getRequestDispatcher("resources/view/html/buyTicket.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/resources/view/buy_ticket/buyTicket.jsp").forward(request, response);
 
     }
 

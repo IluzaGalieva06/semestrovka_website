@@ -34,7 +34,7 @@ public class AddConcertServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("resources/view/html/addConcert.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/resources/view/add_concert/addConcert.jsp").forward(request, response);
 
     }
 
@@ -48,9 +48,6 @@ public class AddConcertServlet extends HttpServlet {
                 .description(request.getParameter("description"))
                 .price(Long.valueOf(request.getParameter("price")))
                 .build();
-
-
-
 
         FileInfo fileInfo = filesService.saveFileToStoragePoster(
                 concertForm,
@@ -70,14 +67,9 @@ public class AddConcertServlet extends HttpServlet {
             if (artist != null) {
 
                 ConcertSinger concertSinger = new ConcertSinger(concertService.getIdByName(request.getParameter("name")), artist.getId());
-                concertSingerService.save(concertSinger); // Сохранение связи в базу данных
+                concertSingerService.save(concertSinger);
             }
         }
-
-
-
-
-
 
         response.sendRedirect("add-concert");
         HttpSession session = request.getSession(true);

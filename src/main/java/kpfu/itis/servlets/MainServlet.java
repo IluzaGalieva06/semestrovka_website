@@ -33,7 +33,7 @@ public class MainServlet extends HttpServlet {
 
         request.setAttribute("concertsForJsp", concerts);
         request.setAttribute("concertSingerMap", concertSingerMap);
-        request.getRequestDispatcher("resources/view/html/main.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/resources/view/main/main.jsp").forward(request, response);
 
     }
 }

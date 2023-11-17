@@ -36,6 +36,6 @@ public class ConcertDetailsServlet extends HttpServlet {
         request.setAttribute("concertDetails", concertForm);
         request.setAttribute("singerNames", singerNames);
 
-        request.getRequestDispatcher("resources/view/html/concertDetails.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/resources/view/concert_details/concertDetails.jsp").forward(request, response);
     }
 }

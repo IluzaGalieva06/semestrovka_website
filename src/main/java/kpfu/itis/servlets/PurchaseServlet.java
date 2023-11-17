@@ -24,7 +24,7 @@ public class PurchaseServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("resources/view/html/buyTicket.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/resources/view/buy_ticket/buyTicket.jsp").forward(request, response);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class PurchaseServlet extends HttpServlet {
                 Thread emailThread = new Thread(emailSender);
                 emailThread.start();
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("resources/view/html/success.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/resources/view/success/success.jsp");
                 dispatcher.forward(request, response);
             } catch (NumberFormatException e) {
 

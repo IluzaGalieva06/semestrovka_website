@@ -41,7 +41,7 @@ public class SearchServlet extends HttpServlet {
         request.setAttribute("singerNames", singerNames);
 
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("resources/view/html/concertDetails.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/resources/view/concert_details/concertDetails.jsp");
         dispatcher.forward(request, response);
 
 

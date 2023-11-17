@@ -25,7 +25,7 @@ public class UpdateConcertServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("resources/view/html/update-concert.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/resources/view/update_concert/update-concert.jsp").forward(request, response);
 
 
     }

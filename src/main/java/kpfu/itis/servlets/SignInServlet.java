@@ -27,7 +27,7 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("resources/view/html/sign_in.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/resources/view/sign_in/sign_in.jsp").forward(request, response);
     }
 
     @Override
@@ -44,7 +44,9 @@ public class SignInServlet extends HttpServlet {
 
         } catch (SmException e) {
             request.setAttribute("errorMessage", e.getMessage());
-            request.getRequestDispatcher("signIn.jsp").forward(request, response);
+            response.sendRedirect("sign_in");
+
+
         }
 
 

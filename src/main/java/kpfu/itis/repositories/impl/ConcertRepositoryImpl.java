@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class ConcertRepositoryImpl implements ConcertRepository {
-    private static final String SQL_GET_BY_NAME = "select * from concert where name = ?";
+    private static final String SQL_GET_BY_NAME = "select * from concert where LOWER(name) = LOWER(?)";
     private static final String SQL_SELECT_ALL = "select * from concert";
     private static final String SQL_INSERT_CONCERT = "INSERT INTO concert ( name, date, description, poster_id, location_id, price) VALUES ( ?, ?, ?, ?, ?, ?)";
     private static final String SQL_GET_LOCATION_ID = "SELECT id FROM location WHERE location.location = ?";
@@ -24,7 +24,7 @@ public class ConcertRepositoryImpl implements ConcertRepository {
     private static final String SQL_GET_BY_ID = "select * from concert where id = ?";
     private static final String SQL_GET_CONCERT_FORM = "SELECT concert.id, concert.name, location.location as location,  concert.date, concert.description, concert.poster_id, concert.price FROM concert  JOIN location ON concert.location_id = location.id;";
 
-    private static final String SQL_GET_BY_NAME_CONCERT_FORM = "SELECT concert.id, concert.name, location.location as location,  concert.date, concert.description, concert.poster_id, concert.price FROM concert  JOIN location ON concert.location_id = location.id where LOWER(concert.name) = LOWER(?);";
+    private static final String SQL_GET_BY_NAME_CONCERT_FORM = "SELECT concert.id, concert.name, location.location as location, concert.date, concert.description, concert.poster_id, concert.price FROM concert  JOIN location ON concert.location_id = location.id where LOWER(concert.name) = LOWER(?);";
     private static final String SQL_GET_BY_ID_CONCERT_FORM = "SELECT concert.id, concert.name, location.location as location,  concert.date, concert.description, concert.poster_id, concert.price FROM concert  JOIN location ON concert.location_id = location.id where concert.id = ?;";
     private static final String SQL_DELETE_BY_ID = "delete from concert where id = ?";
 
@@ -324,7 +324,7 @@ public class ConcertRepositoryImpl implements ConcertRepository {
 
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_GET_BY_NAME);
 
-            preparedStatement.setString(1, name);
+            preparedStatement.setString(1, name.toLowerCase());
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next() == false) {
